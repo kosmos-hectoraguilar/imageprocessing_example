@@ -1,4 +1,4 @@
-import cv from "opencv.js";
+import cv from "@mjyc/opencv.js";
 
 const FPS = 5;
 const LOW_BRIGHTNESS_LIMIT = 80;
