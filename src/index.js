@@ -8,8 +8,8 @@ const H_INCHES = 2.23;
 const W_INCHES = 3.38;
 const DPI_LIMIT = 300;
 
-let alert = document.getElementById("alert-camera");
-alert.style.visibility = "hidden";
+//let alert = document.getElementById("alert-camera");
+//alert.style.visibility = "hidden";
 
 var snapButton = document.querySelector("#icon-flex");
 
@@ -51,7 +51,7 @@ function takeSnapshot() {
     // You can try more different parameters
     //let rect = new cv.Rect(100, 100, 200, 200);
 
-    let ratio = Math.max(
+    let ratio = Math.min(
       video.videoWidth / video.width,
       video.videoHeight / video.height
     );
@@ -93,8 +93,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       let video = document.getElementById("videoInput");
       video.srcObject = stream;
       video.play();
-      video.height = document.body.offsetHeight;
-      video.width = document.body.offsetWidth;
+      //video.height = window.outerHeight;
+      video.width = window.outerWidth + 50;
 
       src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
       cap = new cv.VideoCapture(video);
@@ -130,7 +130,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           let laplace = blurInput(reducedMap);
           reducedMap.delete();
 
-          let alert = document.getElementById("alert-camera");
+          //let alert = document.getElementById("alert-camera");
           var element = document.getElementById("photo-button");
 
           if (
@@ -138,12 +138,12 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             brightness < LOW_BRIGHTNESS_LIMIT //||
             //laplace < 80
           ) {
-            alert.style.visibility = "visible";
+            //alert.style.visibility = "visible";
             element.classList.add(".icon-deseable");
-            document.getElementById("alert-text").innerHTML =
-              "variance:" + laplace + " - brightness:" + brightness;
+            //document.getElementById("alert-text").innerHTML =
+            //"variance:" + laplace + " - brightness:" + brightness;
           } else {
-            alert.style.visibility = "hidden";
+            //alert.style.visibility = "hidden";
             element.classList.remove(".icon-deseable");
           }
           setTimeout(processVideo, 1000 / FPS);
@@ -157,8 +157,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       setTimeout(processVideo, 1000 / FPS);
     });
 } else {
-  document.getElementById("alert-text").innerHTML = "Navegador no soportado";
-  alert.style.visibility = "visible";
+  //document.getElementById("alert-text").innerHTML = "Navegador no soportado";
+  //alert.style.visibility = "visible";
 }
 
 /**

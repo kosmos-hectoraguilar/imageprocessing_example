@@ -1,103 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 	<title>Scanner INE</title>
 
 	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	 crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<!-- Font awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-	 crossorigin="anonymous">
-
-	<script src="https://browser.sentry-cdn.com/5.2.1/bundle.min.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
 </head>
-
 <body>
-	<!--<div class="container-flash"></div>-->
-	<div class="container-fluid">
-		<div class="display-flex">
-			<div class="video">
-				<video id="videoInput" width="100%">
-				</video>
-			</div>
-
-			<div class="b-content">
-				<figure class="icon-conten">
-					<img src="assets/images/icons/icon-flash.svg">
-				</figure>
-
-				<figure class="icon-conten-close">
-					<a href="#"><img src="assets/images/icons/icon-close.svg">
-						<figcaption>Cerrar</figcaption>
-					</a>
-				</figure>
-			</div>
-			<div class="m-content">
-				<div class="alert-camera" id="alert-camera">
-					<h1>¡Fuera de foco!</h1>
-					<p id="alert-text">Para tomar la fotografía enfoca mejor la INE</p>
-				</div>
-
-				<div class="
-				 content-flex">
-					<div class="photo-place" id="photo-focus"></div>
-				</div>
-
-				<div class="text-center m-resolution">
-					<h2>Regresa tu teléfono de forma horizontal</h2>
-					<p class="text-gray">Y toma la foto como se indica</p>
-
-					<figure class="text-center">
-						<img src="assets/images/svg/id-card.svg" class="card-svg">
-					</figure>
-
-
-				</div>
-			</div>
-			<div class="f-content">
-				<figure class="icon-flex" id="icon-flex">
-					<img id="photo-button" src="assets/images/icons/icon-photo.svg" class="icon-photo icon-deseable">
-				</figure>
-			</div>
-		</div>
-		<canvas id="canvasPhoto" height="0" width="0"></canvas>
-	</div>
-
-	<script type="text/javascript">
-		Sentry.init({ dsn: 'https://f4500ef0a9c34b06b9ff51707a470d1b@sentry.io/1462159' });
 	
-		$(document).ready(function() {
-		  function reorient(e) {
-		    var portrait = window.orientation % 180 == 0;
-		    $("body > div").css("-webkit-transform", !portrait ? "rotate(-90deg)" : "");
-		  }
-		  window.onorientationchange = reorient;
-		  window.setTimeout(reorient, 0);
+	<!--<div class="container-flash"></div>-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="video">
+					<video id="videoInput"  frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture">
+					</video>
+				</div>
+				
+				<!--div class="b-content col-lg-12 text-right">
+					<figure class="icon-conten-close">
+						<a href="#"><img src="assets/images/icons/icon-close.svg" class="icon-close">
+						<figcaption>Cerrar</figcaption></a>
+					</figure>
+				</div -->
+
+			</div>
+
+			<div class="row">
+				<div class="photo-place" id=Pantalla>
+					<div class="m-content" id="photo-focus">
+							<!--<div class="alert-camera">
+								<h1>¡Fuera de foco!</h1>
+								<p>Para tomar la fotografía enfoca mejor la INE</p>
+							</div>-->
+
+							<div class="text-marco" >
+								<p class="text-14">Coloque la credencial aquí.<br>Se escaneará automáticamente.</p>
+							</div>
+
+							<div class="text-center m-resolution">
+								<h2>Esta resolución no es valida para usar la camara.</h2>
+								<p class="text-gray">Disculpa las molestias</p>
+
+								<figure class="text-center">
+									<img src="assets/images/svg/id-card.svg" class="card-svg">
+								</figure>
+
+								
+							</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="f-content col-lg-12">
+					<figure class="icon-flex">
+						<img src="assets/images/icons/icon-photo.svg" class="icon-photo icon-deseable" id="icon-flex">
+					</figure>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+	<canvas id="canvasPhoto" height="0" width="0"></canvas>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			function reorient(e) {
+				var portrait = (window.orientation % 180 == 0);
+			    $("body > div").css("-webkit-transform", !portrait ? "rotate(-90deg)" : "");
+			 }
+			 window.onorientationchange = reorient;
+			 window.setTimeout(reorient, 0);
 		});
 	</script>
 
 
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	 crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	 crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	 crossorigin="anonymous"></script>
-	<script src="/src/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="src/index.js"></script>
+		<script type="text/javascript" >
+  
+			var alturaP= window.screen.availHeight-100 ;
+				 var anchoP= window.screen.availWidth -100 ;
+				 console.log("alturaP" + alturaP, "Ancho "+ anchoP);
+			 var altura= parseInt(alturaP) / 636;
+			 var ancho=parseInt(anchoP) / 1014;
+	 
+			 console.log("alturaP" + altura, "Ancho "+ ancho);
+			 var x = Math.min(altura, ancho);
+			 
+			 console.log("min:" + x);
+			 w= (x) * 636 ;
+			 h= (x) * 1014;
+			 console.log("total altura :" + w, "total ancho"+ h );
+				document.getElementById("Pantalla").style.height= w +"px";
+			document.getElementById("Pantalla").style.width= h + "px";
+			 
+		 
+		 </script>
 </body>
-
 </html>
